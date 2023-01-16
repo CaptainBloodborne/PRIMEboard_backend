@@ -81,7 +81,7 @@ class Preset:
                 "subject_id": nm["fields"].get("subjectId"),
                 # "parentSubjectId": nm["fields"].get("parentSubjectId", "empty")[0],
                 "brand_id": nm["fields"].get("brandId"),
-                "stock_exists": nm["fields"].get("stockExists"),
+                "stock_exists": int(nm["fields"].get("stockExists")),
                 # "scoreNorma": nm["fields"].get("scoreNorma"),
                 # "elasticScore": nm["fields"].get("elasticScore"),
                 "score": nm["fields"].get("score"),
@@ -126,7 +126,7 @@ class Preset:
 
         if self._miner == "elasticsearch":
             subjects = [
-                nm.get("subjectId")
+                nm.get("subject_id")
                 for nm in self._data
             ]
 
@@ -139,7 +139,7 @@ class Preset:
             return sorted_counter.most_common()
         elif self._miner == "context":
             subjects = [
-                nm.get("subjectId")
+                nm.get("subject_id")
                 for nm in self._data
             ]
 
@@ -156,7 +156,7 @@ class Preset:
     def get_brands(self):
         if self._miner == "elasticsearch":
             brands = [
-                nm.get("brandId")
+                nm.get("brand_id")
                 for nm in self._data
             ]
 
@@ -169,7 +169,7 @@ class Preset:
             return sorted_counter.most_common()
         elif self._miner == "context":
             brands = [
-                nm.get("brandId")
+                nm.get("brand_id")
                 for nm in self._data
             ]
 
@@ -221,7 +221,7 @@ class Preset:
     def get_in_stock(self):
         counter = 0
         for nm in self._data:
-            if nm.get("stockExists"):
+            if nm.get("stock_exists"):
                 counter += 1
 
         return counter

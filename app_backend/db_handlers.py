@@ -7,6 +7,7 @@ from . import models, schemas
 def get_page(db: Session, page: int, table):
     """
 
+    :param table:
     :param db:
     :param page:
     :return:
@@ -16,9 +17,6 @@ def get_page(db: Session, page: int, table):
     if page == 1:
         num = 1
 
-    print(table, "inside handlers")
-    print(table.__dict__)
-    print(table.columns)
     result = db.query(
         table
     ).filter(table.c.id >= num, table.c.id < num + 100).all()

@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Sequence
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -12,11 +12,9 @@ def create_preset_model(token: str):
         id = Column(
             Integer,
             primary_key=True,
-            index=True,
         )
         nm_id = Column(
             Integer,
-            unique=True,
         )
 
         subject_id = Column(
@@ -33,3 +31,28 @@ def create_preset_model(token: str):
         )
 
     return PresetNm
+
+
+# class PresetMeta(Base):
+#     __tablename__ = "preset_info"
+#
+#     preset_id = Column(
+#         String,
+#         primary_key=True,
+#     )
+#
+#     subjects = Column(
+#         Sequence,
+#     )
+#
+#     brands = Column(
+#         Sequence,
+#     )
+#
+#     in_stock = Column(
+#         Integer,
+#     )
+#
+#     total = Column(
+#         Integer,
+#     )

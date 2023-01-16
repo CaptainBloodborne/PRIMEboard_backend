@@ -3,10 +3,6 @@ FROM python:3.10-slim-buster as dev_build
 
 ARG FAST_API_ENV
 
-# copy the requirements file into the image
-
-#RUN apt-get update && apt-get install -y build-essential cron git curl
-
 ENV FAST_API_ENV=${FAST_API_ENV} \
   # python:
   PYTHONFAULTHANDLER=1 \
@@ -65,4 +61,4 @@ RUN pip install --upgrade pip && pip install poetry
 #COPY . /app_backend
 #
 #
-CMD poetry run uvicorn app_backend.main:app --reload --host "0.0.0.0" --port 8000
+CMD poetry run uvicorn app_backend.main:app --host "0.0.0.0" --port 8000
