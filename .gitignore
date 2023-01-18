@@ -161,3 +161,4 @@ Pipfile.lock
 /.env.dev
 /psq_db/
 /.env.prod
+/app_backend.db

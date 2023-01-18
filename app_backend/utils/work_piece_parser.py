@@ -3,9 +3,7 @@ import shlex
 
 class WorkPiece:
     def __init__(self, workpiece: str):
-        print(workpiece)
         columns = workpiece.split("|")
-        print(columns)
         self._search_query = columns[0]
         self._preset_id = int(columns[1])
         self._active = columns[2]
